@@ -34,6 +34,18 @@ services:
       - 8888:8080
 
   dynamo:
+    container_name: dynamo
     image: amazon/dynamodb-local
+    depends_on:
+      - mysql
     ports:
       - "8000:8000"
+
+  dynamo_admin:
+    image: aaronshaf/dynamodb-admin
+    ports:
+      - "8001:8001"
+    depends_on: 
+      - dynamo
+    environment:
+      DYNAMO_ENDPOINT: http://dynamo:8000
