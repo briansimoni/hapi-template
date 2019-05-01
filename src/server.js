@@ -20,7 +20,7 @@ const init = async () => {
 
     server.route({
         method: 'GET',
-        path: '/',
+        path: '/dogs',
         handler: async (request, h) => {
             try {
                 const pet = await dogDatabase.createPet({ name: 'dog!' });
